@@ -29,7 +29,7 @@ def config():
 def page(config, request):
     with sync_playwright() as playwright:
         browser_type = getattr(playwright, config["browser"])
-        browser = browser_type.launch(headless=False)
+        browser = browser_type.launch(headless=True)
         context = browser.new_context(
             base_url=config["base_url"],
             viewport={"width": 1280, "height": 720},
