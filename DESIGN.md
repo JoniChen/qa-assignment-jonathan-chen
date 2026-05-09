@@ -1,5 +1,8 @@
 # Design choices 
 
+## AI Code Generator
+I have used github copilot extensively for this assignment - i use code generators a lot and i treat them like a team member creating code which i then review , improve , and fix. It saves a lot of time instead of searching in old projects for the same syntax and to reuse code slices. 
+
 ## Language and Framework 
 
 I have chosen to use python and playwright for this task. After years of using java and selenium , the last few years i have switched entirely to python and playwright.
