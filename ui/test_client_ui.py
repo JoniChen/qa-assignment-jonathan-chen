@@ -29,9 +29,6 @@ def test_invalid_credentials_login(page, config):
     
     assert expected_error_text in error_message, f"Expected '{expected_error_text}' in error message, but got: '{error_message}'"
 
-    # Keep browser open for 3 seconds to see the error
-    page.wait_for_timeout(3000)
-
 
 def test_add_item_to_cart(page, config):
     login_page = LoginPage(page)
@@ -69,9 +66,6 @@ def test_add_item_to_cart(page, config):
 
     # Ensure items are different
     assert first_item["name"] != second_item["name"], "Added items should be different products"
-
-    # Keep browser open for 5 seconds to see the result
-    page.wait_for_timeout(5000)
 
 
 def test_add_random_item_and_complete_checkout(page, config):
@@ -121,6 +115,3 @@ def test_add_random_item_and_complete_checkout(page, config):
     assert checkout_page.is_order_complete()
     confirmation_message = checkout_page.get_order_confirmation_message()
     assert "Thank you for your order" in confirmation_message
-
-    # Keep browser open for 3 seconds to see confirmation
-    page.wait_for_timeout(3000)
