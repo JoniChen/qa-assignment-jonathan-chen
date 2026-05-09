@@ -1,0 +1,25 @@
+{
+  "base_url": "https://www.saucedemo.com",
+  "browser": "chromium",
+  "timeouts": {
+    "page_load": 30000,
+    "action": 10000
+  },
+  "credentials": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "api": {
+    "base_url": "https://jsonplaceholder.typicode.com",
+    "create_post_payload": {
+      "title": "Test Post Title",
+      "body": "This is a test body for the new post.",
+      "userId": 123
+    },
+    "update_post_payload": {
+      "title": "Updated Title",
+      "body": "This is the updated body content.",
+      "userId": 1
+    }
+  }
+}
