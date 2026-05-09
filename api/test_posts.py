@@ -1,13 +1,14 @@
 import requests
 from utils.conftest import load_config
+from utils.api_client import APIClient
 
 
 def test_get_posts():
     config = load_config()
-    url = f"{config['api']['base_url']}/posts"
+    client = APIClient(config['api']['base_url'])
     
     # Make GET request
-    response = requests.get(url)
+    response = client.get('/posts')
     # Verify response code
     assert response.status_code == 200, f"Expected status 200, got {response.status_code}"
     
@@ -44,10 +45,10 @@ def test_get_posts():
 
 def test_get_post_by_id():
     config = load_config()
-    base_url = config['api']['base_url']
+    client = APIClient(config['api']['base_url'])
 
     # Valid post ID should return 200
-    valid_response = requests.get(f"{base_url}/posts/1")
+    valid_response = client.get('/posts/1')
     assert valid_response.status_code == 200, f"Expected 200 for existing post, got {valid_response.status_code}"
 
     post = valid_response.json()
@@ -57,16 +58,16 @@ def test_get_post_by_id():
     assert 'body' in post
 
     # Non-existent post ID should return 404
-    invalid_response = requests.get(f"{base_url}/posts/99999")
+    invalid_response = client.get('/posts/99999')
     assert invalid_response.status_code == 404, f"Expected 404 for non-existent post, got {invalid_response.status_code}"
 
 
 def test_create_post():
     config = load_config()
-    base_url = config['api']['base_url']
+    client = APIClient(config['api']['base_url'])
     payload = config['api']['create_post_payload']
 
-    response = requests.post(f"{base_url}/posts", json=payload)
+    response = client.post('/posts', json=payload)
     assert response.status_code == 201, f"Expected 201 for created post, got {response.status_code}"
 
     created_post = response.json()
@@ -84,10 +85,10 @@ def test_create_post():
 
 def test_update_post():
     config = load_config()
-    base_url = config['api']['base_url']
+    client = APIClient(config['api']['base_url'])
     update_payload = config['api']['update_post_payload']
     
-    response = requests.put(f"{base_url}/posts/1", json=update_payload)
+    response = client.put('/posts/1', json=update_payload)
     assert response.status_code == 200, f"Expected 200 for updated post, got {response.status_code}"
     
     updated_post = response.json()
@@ -104,9 +105,9 @@ def test_update_post():
 
 def test_delete_post():
     config = load_config()
-    base_url = config['api']['base_url']
+    client = APIClient(config['api']['base_url'])
     
-    response = requests.delete(f"{base_url}/posts/1")
+    response = client.delete('/posts/1')
     
     # JSONPlaceholder returns 200 for successful delete
     assert response.status_code in [200, 204], f"Expected 200 or 204 for deleted post, got {response.status_code}"
