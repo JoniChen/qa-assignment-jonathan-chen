@@ -27,12 +27,6 @@ python -m pip install -r requirements.txt
 python -m playwright install --with-deps
 ```
 
-4. Configure test settings in `config.json`:
-   - `base_url`: Website URL for UI tests
-   - `api.base_url`: API endpoint for API tests
-   - `credentials`: Username/password for login
-   - `timeouts`: Wait times for elements and network requests
-
 ## How to Run Locally
 
 ### Run all tests
@@ -67,8 +61,6 @@ Or use the default configuration (2 workers):
 pytest  # Uses pytest.ini settings
 ```
 
-**Note:** Parallel execution improves speed for large test suites. Adjust worker count based on your machine's CPU cores.
-
 ## How to View Reports
 
 After running tests, open the HTML report:
@@ -81,12 +73,6 @@ open reports/report.html
 open reports/ui_report.html
 open reports/api_report.html
 ```
-
-Reports include:
-- ✅ Test results (passed/failed/skipped)
-- 📸 Screenshots for failed UI tests
-- 📋 Console logs captured during execution
-- ⏱️ Execution time for each test
 
 ## CI/CD Pipeline
 
@@ -103,11 +89,6 @@ View the latest test results: [GitHub Actions Workflow](../../actions)
 1. Go to **Actions** tab in GitHub
 2. Select **CI** workflow
 3. Click **Run workflow** button
-
-### CI Features
-- Parallel execution of UI and API test suites
-- Automatic artifact uploads (reports, logs, screenshots)
-- Runs on Ubuntu Linux environment
 
 ## Project Structure
 
@@ -129,26 +110,8 @@ View the latest test results: [GitHub Actions Workflow](../../actions)
 ```
 
 ## Configuration
+config.json at root handles URLs, timeouts, credentails , and data payloads
 
-Edit `config.json` to customize:
-- **UI Settings:** Browser type, base URL, timeouts
-- **API Settings:** API base URL, request/response payloads
-- **Credentials:** Test account username and password
-
-```json
-{
-  "base_url": "https://example.com",
-  "browser": "chromium",
-  "timeout": 10000,
-  "credentials": {
-    "username": "user@example.com",
-    "password": "password123"
-  },
-  "api": {
-    "base_url": "https://api.example.com"
-  }
-}
-```
 
 ## Dependencies
 
