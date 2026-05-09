@@ -21,14 +21,18 @@ Since i am using python the natural choice for test runner is pytest and for api
 What i believe is a good startegy - 
 1. Stable selectors like data-test-id instead of brittle xpath / css - i have no problem to own this end to end including changing the client repo source code myself in order to have better locators where not available instead of waiting for client team
 2. No hard sleeps - i avoid time.sleep unless there is no alternative , instead i use playwright auto wait or explicit conditions
-3. Retry policy
-4. Detailed logs and traces
+3. Retry policy - sometimes a retry will show there was a temporary issue with server response and it is not the test fault
+4. Detailed logs and traces - are important for debugging fast
 
 ## What is important when scaling tests number
 At scale , anti flakiness is less about adding waits and more about discipline : stable selectors , isolated tests , reliable environment and fast feedback
 
 ## Reporting and triage 
-If a test fails at night , we will see a clear text error message , a screenshot or video showing how it got there , and a log trace of what went on with the dom or network
+If a test fails at night , we will see a clear text error message , a screenshot or video showing how it got there , and a log trace of what went on with the dom or network in case the error came from the server or the browser
 
+## What i would do if i had a few more days 
+I would focus on making the infrastructure stronger . I would also write a rules file for team members or code generators - like always prefer data-test locators over css,
+move all data to a data factory seperated from test layer etc. . I would add a data class to handle different data for tests which will also be useful when scaling. 
+Better html reports that include screenshot and logs and serves them in a preetier way 
 
 
