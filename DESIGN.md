@@ -3,11 +3,15 @@
 ## Language and Framework 
 
 I have chosen to use python and playwright for this task. After years of using java and selenium , the last few years i have switched entirely to python and playwright.
+
 I love python for its simplicity , the syntax is much more readable , and it is typeless and forgiving as opposed to java which is not. 
+
 Selenium is a very popular framework to this day , but it is old and slow and takes many code lines sometimes to acheive simple tasks. 
 That is why i like playwright and the direction they are taking , it has many usefull features out of the box like autowaits and parallel , it is very fast and lightweight.
+
 The only time i can see why using selenium would be better is only if legacy tests are already written with selenium and the job is to increase test number. 
 The same for java if a comapny needs to write tests in the same project as the product code and that code is java then i will write the tests in java. 
+
 Since i am using python the natural choice for test runner is pytest and for api the requests library
 
 ## Anti flakiness strategy
