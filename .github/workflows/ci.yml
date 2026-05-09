@@ -48,7 +48,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.suite }}-artifacts
+          name: ${{ matrix.suite }}-report
           path: |
             reports/${{ matrix.suite }}_report.html
             console_logs/**
