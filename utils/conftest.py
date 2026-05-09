@@ -68,8 +68,6 @@ def page(config, request):
                         log_file.write("\n")
 
                 page.screenshot(path=str(screenshot_path))
-                print(f"\nConsole log saved: {console_log_path}")
-                print(f"Screenshot saved: {screenshot_path}")
             except Exception as e:
                 print(f"Error capturing console log or screenshot: {e}")
         else:

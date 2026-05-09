@@ -57,7 +57,7 @@ def test_add_item_to_cart(page, config):
 
     # Verify first item details
     first_item = inventory_page.get_cart_item_by_index(0)
-    assert "Sauce Cabs" in first_item["name"]
+    assert "Sauce Labs" in first_item["name"]
     assert "$" in first_item["price"]
     assert float(first_item["price"].replace("$", "")) > 0
 
